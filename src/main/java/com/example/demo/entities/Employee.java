@@ -1,6 +1,6 @@
 package com.example.demo.entities;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -21,10 +21,9 @@ import lombok.ToString;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
 @ToString
+@Entity
 @Table(name = "employees")
-
 public class Employee {
 
     @Id
@@ -32,26 +31,28 @@ public class Employee {
     @Column(name = "employee_id")
     private Long id;
 
-    @Column(name = "first_name")
+    @Column(name = "first_name", nullable = false, length = 50)
     private String firstName;
 
-    @Column(name = "last_name")
+    @Column(name = "last_name", nullable = false, length = 50)
     private String lastName;
 
-    @Column(name = "email")
+    @Column(name = "email", unique = true, length = 100)
     private String email;
 
-    @Column(name = "phone_number")
+    @Column(name = "phone_number", length = 20)
     private String phone;
 
     @Column(name = "salary")
     private Double salary;
 
     @Column(name = "hire_date")
-    private Date hireDate;
+    private LocalDate hireDate;     // LocalDate instead of java.util.Date
 
-    
-
-   
-    
+    // Owning side of the relationship — holds the actual FK column
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "department_id")
+    @JsonIgnoreProperties("employees")  // prevents infinite JSON loop
+    @ToString.Exclude                   // prevents Lombok infinite loop
+    private Department department;
 }
