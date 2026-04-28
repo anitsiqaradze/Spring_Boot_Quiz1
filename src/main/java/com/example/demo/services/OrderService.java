@@ -18,9 +18,9 @@ public class OrderService {
     }
     
 
-    // public List<OrderInfo>searchOrder(String customerName, OrderStatus status){
-    //     return this.orderRepository(customerName, status);
-    // }
+    public List<OrderInfo>searchOrders(String customerName, OrderStatus status){
+        return orderRepository.searchOrders(customerName, status);
+    }
 
 
 }
