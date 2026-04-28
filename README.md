@@ -1,8 +1,7 @@
-სათაური: Class Activity (Quiz) - I
-აღწერა:
+# Task Definiyion
 
-1. Create a Product entity
-   Create a JPA entity class called Product mapped to the table products. It must have:
+1.  Create a Product entity
+    Create a JPA entity class called Product mapped to the table products. It must have:
 
 - id (Long, auto-generated primary key)
 - name (String, not nullable, max 100 chars)
@@ -43,20 +42,3 @@ In an OrderRepository, write a Spring Data method that:
    BigDecimal price;
    String category;
    }
-
-კვირა: 6
-დაწყების თარიღი: 2026-04-22 00:00:00
-დასრულების თარიღი: 2026-04-29 00:00:00
-
-default
-Arial
-3
-
-Clear Class
-
-///\* answers to questions
-
-1. - createdAt (LocalDateTime, set automatically before persist)
-
-jpa specifies seven optioinal lifecycle events.
-before persist is called for new entity @PrePersist
