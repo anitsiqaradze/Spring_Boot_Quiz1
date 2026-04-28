@@ -25,9 +25,6 @@ public class Product {
 
     private LocalDateTime createdAt;
 
-    // @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
-    // private List<Review> reviews;
-
     @PrePersist
     public void prePersist() {
         this.createdAt = LocalDateTime.now();
